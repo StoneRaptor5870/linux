@@ -1,0 +1,21 @@
+pwd - (print working directory)
+user@bash: pwd
+/home/ryan
+
+cd [location]
+
+ls - (list)
+ls [options][location]
+
+user@bash:~/repos/linux$ ls
+'01 Basic Navigation'   commands.txt   readme.md
+
+user@bash:~/repos/linux$ ls -l
+total 12
+drwxr-xr-x 2 user user 4096 Jun 17 14:31 '01 Basic Navigation'
+-rw-r--r-- 1 user user 2101 Jun 13 03:29  commands.txt
+-rw-r--r-- 1 user user   12 Jun 13 03:27  readme.md
+
+~ (tilde) - This is a shortcut for your home directory. eg, if your home directory is /home/ryan then you could refer to the directory Documents with the path /home/ryan/Documents or ~/Documents
+. (dot) - This is a reference to your current directory. eg in the example above we referred to Documents on line 4 with a relative path. It could also be written as ./Documents (Normally this extra bit is not required but in later sections we will see where it comes in handy).
+.. (dotdot)- This is a reference to the parent directory. You can use this several times in a path to keep going up the hierarchy. eg if you were in the path /home/ryan you could run the command ls ../../ and this would do a listing of the root directory.

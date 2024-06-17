@@ -1,0 +1,16 @@
+Everything is actually a file. A text file is a file, a directory is a file, your keyboard is 
+a file (one that the system reads from only), your monitor is a file (one that the system writes to only) etc.
+
+Under Linux the system actually ignores the extension and looks inside the file to determine what type of file it is.
+So for instance I could have a file myself.png which is a picture of me. I could rename the file to myself.txt or just myself
+and Linux would still happily treat the file as an image file.
+
+- file [path]
+user@bash:~/repos/linux/02 Files$ file files.txt
+files.txt: ASCII text
+
+Relative path
+user@bash:~/repos/linux$ file 02\ Files/files.txt
+02 Files/files.txt: ASCII text
+
+Tt would be more accurate to say that a path is a means to get to a particular location in the system and that location is a file.

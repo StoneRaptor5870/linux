@@ -1,0 +1,11 @@
+The Manual Pages are a set of pages that explain every command available on your system.
+Including what they do, how they run and arguments they accept.
+
+Command to invoke manual pages:
+man <command to look up>
+man -k <search term>
+
+/<term>
+If you want to search within a manual page this is also possible. To do this, whilst you are in the particular manual page
+you would like to search press forward slash '/' followed by the term you would like to search for and hit 'enter' If the
+term appears multiple times you may cycle through them by pressing the 'n' button for next.
