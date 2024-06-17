@@ -1,0 +1,69 @@
+To make directories
+mkdir [options] <Directory>
+
+mkdir -p tells mkdir to make parent directories
+mkdir -v tells us what it is doing
+
+user@bash: mkdir -p linuxtutorialwork/foo/bar
+user@bash: cd linuxtutorialwork/foo/bar
+user@bash: pwd
+/home/ryan/linuxtutorialwork/foo/bar
+
+user@bash: mkdir -pv linuxtutorialwork/foo/bar
+mkdir: created directory 'linuxtutorialwork/foo'
+mkdir: created directory 'linuxtutorialwork/foo/bar'
+/home/ryan/linuxtutorialwork/foo/bar
+
+To remove a directory
+rmdir [options] <directory>
+
+a directory must be empty before it maybe be removed.
+
+Creating a blank file
+touch [options] <filename>
+
+Copying a file or a directory
+cp [options] <source> <destination>
+
+When we use cp the destination can be a path to either a file or directory. If it is to a file then
+it will create a copy of the source but name the copy the filename specified in destination.
+If we provide a directory as the destination then it will copy the file into that directory and
+the copy will have the same name as the source.
+
+Using the -r option, which stands for recursive, we may copy directories. Recursive means that we want to look
+at a directory and all files and directories within it, and for subdirectories, go into them and do the
+same thing and keep doing this.
+
+Moving a file or directory
+mv [options] <source> <destination>
+
+Renaming files and directories
+
+user@bash: ls
+backups example1 foo
+user@bash: mv foo foo3
+user@bash: ls
+backups example1 foo3
+user@bash: cd ..
+user@bash: mkdir linuxtutorialwork/testdir
+user@bash: mv linuxtutorialwork/testdir /home/ryan/linuxtutorialwork/fred
+user@bash: ls linuxtutorialwork
+backups example1 foo3 fred
+
+We renamed the file foo to be foo3 (both paths are relative).
+We moved into our parent directory. This was done only so in the next line we can illustrate that we may run
+commands on files and directories even if we are not currently in the directory they reside in.
+We renamed the directory testdir to fred (the source path was a relative path and the destination was an aboslute path).
+
+Removing a file ( and non empty directories)
+
+rm [options] <file>
+
+Removing non empty directories
+rm -r backups
+
+A good option to use in combination with r is i which stands for interactive. This option will prompt you before
+removing each file and directory and give you the option to cancel the command.
+
+No undo
+The Linux command line does not have an undo feature.

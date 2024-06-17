@@ -1,0 +1,18 @@
+A command line editor
+Vi is a command line text editor.
+There are two modes in Vi. Insert (or Input) mode and Edit mode. In input mode you may input or enter content into the file.
+In edit mode you can move around the file, perform actions such as deleting, copying, search and replace, saving etc.
+
+vi <file>
+Switch to insert mode by pressing i.
+Type in a few lines of text and press Esc which will take you back to edit mode.
+
+Saving and Exit
+
+ZZ (Note: capitals) - Save and exit
+:q! - discard all changes, since the last save, and exit
+:w - save file but don't exit
+:wq - again, save and exit
+
+Most commands within vi are executed as soon as you press a sequence of keys. Any command beginning
+with a colon ( : ) requires you to hit <enter> to complete the command.
