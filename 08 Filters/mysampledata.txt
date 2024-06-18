@@ -1,0 +1,39 @@
+Fred apples 20
+Susy oranges 5
+Mark watermellons 12
+Robert pears 4
+Terry oranges 9
+Lisa peaches 7
+Susy oranges 12
+Mark grapes 39
+Anne mangoes 7
+Greg pineapples 3
+Oliver rockmellons 2
+Betty limes 14
+
+head
+View the first n lines of data.
+
+tail
+View the last n lines of data.
+
+sort
+Organise the data into order.
+
+nl
+Print line numbers before data.
+
+wc
+Print a count of lines, words and characters.
+
+cut
+Cut the data into fields and only display the specified fields.
+
+sed
+Do a search and replace on the data.
+
+uniq
+Remove duplicate lines.
+
+tac
+Print the data in reverse order.
