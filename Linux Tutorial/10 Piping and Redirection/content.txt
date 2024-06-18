@@ -1,0 +1,102 @@
+Every program we run on the command line automatically has three data streams connected to it.
+
+STDIN (0) - Standard input (data fed into the program)
+STDOUT (1) - Standard output (data printed by the program, defaults to the terminal)
+STDERR (2) - Standard error (for error messages, also defaults to the terminal)
+
+Piping and redirection is the means by which we may connect these streams between programs and files to direct data.
+
+Redirecting to a File
+
+The greater than operator ( > ) indicates to the command line that we wish the programs output (or whatever it sends to STDOUT)
+to be saved in a file instead of printed to the screen.
+
+user@bash: ls
+barry.txt bob example.png firstfile foo1 video.mpeg
+user@bash: ls > myoutput
+user@bash: ls
+barry.txt bob example.png firstfile foo1 myoutput video.mpeg
+user@bash: cat myoutput
+barry.txt
+bob
+example.png
+firstfile
+foo1
+myoutput
+video.mpeg
+
+the output saved in the file was one file per line instead of all across one line when printed to the screen.
+The reason for this is that the screen is a known width and the program can format its output to suit that.
+When we are redirecting, it may be to a file, or it could be somewhere else, so the safest option is to format
+it as one entry per line. This also allows us to easier manipulate that data later on as we'll see further down the page.
+
+Saving to an Existing File
+
+user@bash: cat myoutput
+barry.txt
+bob
+example.png
+firstfile
+foo1
+myoutput
+video.mpeg
+user@bash: wc -l barry.txt > myoutput
+user@bash: cat myoutput
+7 barry.txt
+
+Get the new data to be appended to the file by using the double greater than operator ( >> ).
+
+user@bash: cat myoutput
+7 barry.txt
+user@bash: ls >> myoutput
+user@bash: cat myoutput
+7 barry.txt
+barry.txt
+bob
+example.png
+firstfile
+foo1
+myoutput
+video.mpeg
+
+Redirecting from a File
+
+The less than operator ( < ) then we can send data the other way. We will read data from the file and
+feed it into the program via it's STDIN stream.
+
+user@bash: wc -l myoutput
+8 myoutput
+user@bash: wc -l < myoutput
+8
+
+when we ran wc supplying the file to process as a command line argument, the output from the program included the
+name of the file that was processed. When we ran it redirecting the contents of the file into wc the file name was not printed.
+This is because whenever we use redirection or piping, the data is sent anonymously.
+
+wc recieved some content to process, but it has no knowledge of where it came from so it may not print this information.
+As a result, this mechanism is often used in order to get ancillary data (which may not be required) to not be printed.
+
+Combine the two forms of redirection we have seen so far into a single command:
+user@bash: wc -l < barry.txt > myoutput
+user@bash: cat myoutput
+7
+
+Redirecting STDERR
+
+If we place a number before the > operator then it will redirect that stream (if we don't use a number, like
+we have been doing so far, then it defaults to stream 1).
+
+user@bash: ls -l blah.foo
+ls: cannot access 'blah.foo': No such file or directory
+user@bash: ls -l blah.foo 2> errors.txt
+user@bash: cat errors.txt
+ls: cannot access blah.foo: No such file or directory
+
+To save both normal output and error messages into a single file. This can be done by redirecting the STDERR stream
+to the STDOUT stream and redirecting STDOUT to a file. We redirect to a file first then redirect the error stream.
+We identify the redirection to a stream by placing an & in front of the stream number (otherwise it would redirect
+to a file called 1).
+
+user@bash: ls -l blah.foo > myoutput 2>&1
+user@bash: cat myoutput 
+ls: cannot access 'blah.foo': No such file or directory
