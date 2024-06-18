@@ -1,0 +1,76 @@
+Wildcards are a set of bulding blocks that allow you to create a pattern defining a set of files and directories.
+
+Here is the basic set of wildcards:
+
+* - represents zero or more characters
+? - represents a single character
+[] - represents a range of characters
+
+ls con*
+
+When we offer it this command it sees that we have used wildcards and so, before running the command
+( in this case ls ) it replaces the pattern with every file or directory (ie path) that matches that pattern.
+We issue the command:
+
+ls con*
+Then the system translates this into:
+
+ls content.txt context.txt connor
+
+? Operator
+we are looking for each file whose second letter is i.
+
+user@bash: ls ?i*
+firstfile video.mpeg
+
+user@bash: ls *.???
+barry.txt blah.txt example.png frog.png
+
+The range operator ( [ ] )
+The range operator allows you to limit to a subset of characters.
+
+we are looking for every file whose name either begins with a s or v.
+user@bash: ls [sv]*
+secondfile video.mpeg
+
+user@bash: ls *[0-9]*
+foo1 foo2 foo3
+
+We can also reverse a range using the caret ( ^ ) which means look for any character which is not one of the following.
+user@bash: ls [^a-k]*
+secondfile thirdfile video.mpeg
+
+
+Real World Examples
+
+Find the file type of every file in a directory.
+
+user@bash: file /home/ryan/*
+bin: directory
+Documents: directory
+frog.png: PNG image data
+public_html: directory
+
+Move all files of type either jpg or png (image files) into another directory.
+
+user@bash: mv public_html/*.??g public_html/images/
+
+
+Find out the size and modification time of the .bash_history file in every users home directory.
+(.bash_history is a file in a typical users home directory that keeps a history of commands the user has
+entered on the command line).
+
+user@bash: ls -lh /home/*/.bash_history
+-rw------- 1 harry users 2.7K Jan 4 07:32 /home/harry/.bash_history
+-rw------- 1 ryan users 3.1K Jun 12 21:16 /home/ryan/.bash_history
+
+Anywhere in any path
+Wildcards may be used at any part of a path.
+
+Wherever a path is used
+Because wildcard substitution is done by the system, not the command, they may be used wherever a path is used.
+
+ls /etc/*.* - matches files that have at least one character before and after a dot, indicating the presence of an extension.
+ls /etc/*.??? - matches files with a three-character extension.
+ls /etc/*[[:upper:]]* - matches files that contain at least one uppercase letter anywhere in their name.
+ls /etc/???? - matches files that have exactly four characters in their name.

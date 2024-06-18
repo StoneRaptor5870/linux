@@ -1,0 +1,96 @@
+Introduction
+
+Permissions specify what a particular person may or may not do with respect to a file or directory.
+
+So what are they?
+
+Linux permissions dictate 3 things you may do with a file, read, write and execute. They are referred to in Linux by a single letter each.
+
+r read - to view the contents of the file.
+w write - to change the contents of the file.
+x execute - to execute or run the file if it is a program or script.
+
+For every file we define 3 sets of people for whom we may specify permissions.
+
+owner - a single person who owns the file. (typically the person who created the file but ownership may be granted to some one else by certain users)
+group - every file belongs to a single group.
+others - everyone else who is not in the group or the owner.
+
+Three persmissions and three groups of people.
+
+View Permissions
+
+ls -ld
+View the permissions for a specific directory.
+
+ls -l [path]
+
+user@bash: ls -l /home/ryan/linuxtutorialwork/frog.png
+-rwxr----x 1 harry users 2.7K Jan 4 07:32 /home/ryan/linuxtutorialwork/frog.png
+
+- The first 10 characters of the output are what we look at to identify permissions.
+- The first character identifies the file type. If it is a dash ( - ) then it is a normal file. If it is a d then it is a directory.
+- The following 3 characters represent the permissions for the owner. A letter represents the presence of a permission
+  and a dash ( - ) represents the absence of a permission. In this example the owner has all permissions (read, write and execute).
+- The following 3 characters represent the permissions for the group. In this example the group has the ability to read but not write or execute.
+- Finally the last 3 characters represent the permissions for others (or everyone else). In this example they have the execute permission and nothing else.
+
+Change Permissions
+To change permissions on a file or directory we use a command called chmod It stands for change file mode bits which is a bit of a
+mouthfull but think of the mode bits as the permission indicators.
+
+chmod [permissions] [path]
+
+chmod has permission arguments that are made up of 3 components
+
+Who are we changing the permission for? [ugoa] - user (or owner), group, others, all
+Are we granting or revoking the permission - indicated with either a plus ( + ) or minus ( - )
+Which permission are we setting? - read ( r ), write ( w ) or execute ( x )
+
+Grant the execute permission to the group. Then remove the write permission for the owner.
+
+user@bash: ls -l frog.png
+-rwxr----x 1 harry users 2.7K Jan 4 07:32 frog.png
+user@bash: chmod g+x frog.png
+user@bash: ls -l frog.png
+-rwxr-x--x 1 harry users 2.7K Jan 4 07:32 frog.png
+user@bash: chmod u-w frog.png
+user@bash: ls -l frog.png
+-r-xr-x--x 1 harry users 2.7K Jan 4 07:32 frog.png
+
+Setting Permissions Shorthand
+
+3 permissions and each being on or off, we have 8 possible combinations (2^3). Now we can also represent our numbers
+using binary which only has 2 symbols (0 and 1). The mapping of octal to binary is in the table below.
+
+Octal	Binary    Permissions
+0	    0 0 0        ---
+1	    0 0 1        --x
+2	    0 1 0        -w-
+3	    0 1 1        -wx
+4	    1 0 0        r--
+5	    1 0 1        r-x
+6	    1 1 0        rw-
+7	    1 1 1        rwx
+
+All 8 octal values with 3 binary bits and that every possible combination of 1 and 0 is included in it.
+So we have 3 bits and we also have 3 permissions.
+
+user@bash: chmod 751 frog.png
+user@bash: ls -l frog.png
+-rwxr-x--x 1 harry users 2.7K Jan 4 07:32 frog.png
+
+user@bash: chmod 240 frog.png
+user@bash: ls -l frog.png
+--w-r----- 1 harry users 2.7K Jan 4 07:32 frog.png
+
+Permissions for Directories
+
+r - you have the ability to read the contents of the directory (ie do an ls)
+w - you have the ability to write into the directory (ie create files and directories)
+x - you have the ability to enter that directory (ie cd)
+
+The Root User
+On a Linux system there are only 2 people usually who may change the permissions of a file or directory.
+The owner of the file or directory and the root user.
+The root user is a superuser who is allowed to do anything and everything on the system.
