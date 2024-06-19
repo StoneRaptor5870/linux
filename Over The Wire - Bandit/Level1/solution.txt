@@ -1,1 +1,4 @@
 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+
+ls
+cat ./-  "special character access"

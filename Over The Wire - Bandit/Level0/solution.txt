@@ -1,1 +1,4 @@
 ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+ssh username@host -p port
+sshpass -p password ssh username@host -p port
