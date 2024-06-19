@@ -1,0 +1,153 @@
+Cron - Task Scheduling
+
+Cron stands for Command Run ON. It is a mechanism that allows you to tell the system to run certain commands at
+certain times. So for instance, I could craft a script to check how much space is left on the disk that holds the
+home directories and send an email to certain people if the free disk space gets below a certain amount. Then I would
+use cron to get this script to run automatically every hour.
+
+* * * * * command to execute
+
+Where the *'s represent in order from left to right:
+
+Minutes (0 - 59)
+Hours (0 - 23)
+Day of Month (1 - 31)
+Months (1 - 12)
+Day of week (0 - 7) (0 and 7 are Sunday)
+A * in any of those places means every one of those increments.
+
+Some examples:
+
+* * * * * /bin/myscript.sh
+
+Execute myscript.sh every minute.
+
+30 3 * * 4 /bin/myscript.sh
+
+Execute myscript.sh every Thursday at 3:30am.
+
+To view a list of what tasks you currently have scheduled you may run the following command:
+
+crontab -l
+
+To edit your scheduled tasks, run the following command. It will open up in your default text editor which is normally Vim.
+
+crontab -e
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Xargs - Command Repetition
+
+Xargs is a useful tool to run a particular command for every item in a list.
+
+Let's say we have a series of images in a directory and they have been named with an uppercase extension.
+We would like them all to be lowercase instead for consistency.
+
+ls
+image1.JPG image2.JPG image3.JPG image4.jpg
+
+basename -s .JPG -a *.JPG | xargs -n1 -i mv {}.JPG {}.jpg
+
+ls
+image1.jpg image2.jpg image3.jpg image4.jpg
+
+Run ls to see what the current situation is.
+First we use the command basename. This command allows us to get the name with the suffix removed.
+The -s option allows us to specify what the suffix is that should be removed.
+The -a option allows us to specify multiple files. Basename is one of the few commands that doesn't support multiple files as default.
+This will give us a listing of the files to be renamed but with the .JPG suffix removed.
+Now we pipe that list into the command xargs.
+The first option -n1 spcifies that the next command should be executed once for each item passed in through the pipe.
+-i indicates we are going to use a replacement string in the next command (it defaults to {}). This means, execute the next command,
+substituting every occurrence of {} with what was just read through the pipe.
+Finally we specify that the command to execute is mv and fill in the gaps accordingly.
+We ran ls again just to verify that it did do what we thought it would.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Find
+
+Find is a great tool for fine grained control over searching for files. 
+
+find /home -size +200M -exec ls -sh {} \;
+452M /home/barry/backups/everything.tar.gz
+941M /home/lisa/projects/loony/servermigration.tar.gz
+768M /home/mark/Documents/gregs_birthday.mpg
+...
+
+Find is the program we are running.
+/home is the directory to find in. By default it is a recursive search.
+-size is a search option. Here we are saying find any files which are greater in size ( + ) than 200Mb.
+There are many search options and you can list as many as you like here. Find will list all files which match
+all of the given search options.
+-exec tells find to execute the following command for each file it finds. Substitute {} for the actual file found.
+We end the exec option with ; but we have to put a \ in front of it to escape it's normal meaning on the command line.
+Find will list the files found in it's normal behaviour but we were also interested in seeing their sizes so we
+added this last bit to get nicer output.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Tar - Compress files
+
+Tar stands for Tape ARchive and is a popular means for combining and compressing several files into a single file.
+It was originally created for making backups on tape but is still commonly used today. Even though there are other options
+such as ZIP files for compression, tar remains popular as it is able to store filesystem information as well such as user
+and group permissions and dates.
+
+ls
+image1.jpg image2.jpg image3.jpg
+
+tar -zcvf mytar.tar.gz *
+image1.jpg
+image2.jpg
+image3.jpg
+
+ls
+image1.jpg image2.jpg image3.jpg mytar.tar.gz
+
+rm *.jpg
+
+ls
+mytar.tar.gz
+
+tar -zxvf mytar.tar.gz
+image1.jpg
+image2.jpg
+image3.jpg
+
+ls
+image1.jpg image2.jpg image3.jpg mytar.tar.gz
+
+Run ls to see what the current situation is.
+Create the tar archive. z means use gzip to compress the resulting file. c means that we are creating a new archive.
+v means verbose and asks tar to list all the files it's adding to the archive. Finally f indicates that the result
+should be saved into a file (as opposed to being stored on a tape). Then we specify the file to create and after
+that the files to be added to it.
+This time we are extracting files from the archive so replace c with x for extract and off we go.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Secure Copy (scp)
+
+Scp is a quick, easy and secure way to copy files between different machines. It is part of the SSH (Secure SHell)
+suite of tools. With it you may copy files to and from your local machine and a remote machine.
+
+To copy a local file to a remote machine:
+scp ./myfile.jpg username@192.183.243.10:/home/ryan/myfile.jpg
+The authenticity of host '192.183.243.10' can't be established.
+Are you sure you want to continue connecting (yes/no) yes
+Warning: Permanently added '192.183.243.10' to the list of known hosts.
+Password:
+myfile.jpg 100% 37KB 4.5KB/s 00:03
+
+The first argument is the source. Here it is a local file so we provide a path (which may be absolute or relative).
+After that, the destination. Here the destination is a remote server. It is of the format username@server-address:path-to-location
+The first time you connect to a remote machine it will offer this message. You will need to type 'yes' (as opposed to just 'y').
+It will ask you for your password. When you type your password in the cursor won't move. This is a security mechanism so people
+can't tell how many letters in your password.
+This line will update during the file copy to let you know it's progress.
+
+Other way around:
+scp username@192.183.243.10:/home/ryan/myfilex.jpg ./myfiley.jpg
+Password:
+myfiley.jpg 100% 89KB 4.2KB/s 00:12

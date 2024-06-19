@@ -1,0 +1,102 @@
+A program is a series of instructions that tell the computer what to do. When we run a program, those
+instructions are copied into memory and space is allocated for variables and other stuff required to manage its execution.
+This running instance of a program is called a process and it's processes which we manage.
+
+What is Currently Running?
+If we would like to get a snapshot of what is currently happening on the system we may use a program called top.
+
+top
+
+Top will give you a realtime view of the system and only show the number of processes which will fit on the screen.
+Another program to look at processes is called ps which stands for processes. In it's normal usage it will show you
+just the processes running in your current terminal (which is usually not very much). If we add the argument aux then
+it will show a complete system view which is a bit more helpful.
+
+ps [aux]
+
+Killing a Crashed process
+
+user@bash: ps aux | grep 'firefox'
+ryan 6978 8.8 23.5 2344096 945452 ? Sl 08:03 49:53 /usr/lib64/firefox/firefox
+
+It is the number next to the owner of the process that is the PID (Process ID). We will use this to identify which process to kill.
+To do so we use a program which is appropriately called kill.
+
+kill [signal] <PID>
+
+user@bash: kill 6978
+user@bash: ps aux | grep 'firefox'
+ryan 6978 8.8 23.5 2344096 945452 ? Sl 08:03 49:53 /usr/lib64/firefox/firefox
+
+didnt go away so we will use a heavy command
+
+user@bash: kill -9 6978
+user@bash: ps aux | grep 'firefox'
+user@bash: 
+
+My Desktop has locked up
+
+Linux actually runs several virtual consoles. Most of the time we only see console 7 which is the GUI but we
+can easily get to the others. If the GUI has locked up, and we are in luck, we can get to another console and kill
+the offending process from there.
+
+To switch between consoles you use the keyboard sequence CTRL + ALT + F<Console>.
+
+So CTRL + ALT F2 will get you to a console (if all goes well) where you can run the commands as above to identify process ids and kill them.
+Then CTRL + ALT F7 will get you back to the GUI to see if it has been fixed.
+
+Foreground and Background Jobs
+
+We can do is run the program in the background and then we can continue working. It is done with a program called sleep.
+All sleep does is wait a given number of seconds and then quit.
+We can also use a program called jobs which lists currently running background jobs for us.
+
+jobs
+
+user@bash: sleep 5
+
+If you run the above example yourself, you will notice that the terminal waits 5 seconds before presenting you with a prompt again.
+
+user@bash: sleep 5 &
+[1] 21634
+user@bash: 
+user@bash: 
+[1]+ Done sleep 5
+
+This time you will notice that it assigns the process a job number, and tells us what that number is, and gives us
+the prompt back straight away. We can continue working while the process runs in the background. If you wait 5 seconds
+or so and then hit ENTER you will see a message come up telling you the job has completed.
+
+We can move jobs between the foreground and background as well. If you press CTRL + z then the currently running
+foreground process will be paused and moved into the background. We can then use a program called fg which stands
+for foreground to bring background processes into the foreground.
+
+fg <job number>
+
+user@bash: sleep 15 &
+[1] 21637
+user@bash: sleep 10
+(you press CTRL + z, notice the prompt comes back.)
+user@bash: jobs
+[1]- Running sleep 15 &
+[2]+ Stopped sleep 10
+user@bash: fg 2
+[1] Done sleep 15
+
+top
+View real-time data about processes running on the system.
+
+ps
+Get a listing of processes running on the system.
+
+kill
+End the running of a process.
+
+jobs
+Display a list of current jobs running in the background.
+
+fg
+Move a background process into the foreground.
+
+ctrl + z
+Pause the current foreground process and move it into the background.

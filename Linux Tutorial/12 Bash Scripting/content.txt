@@ -1,0 +1,159 @@
+A Bash script allows us to define a series of actions which the computer will then perform without us having to
+enter the commands ourselves. If a particular task is done often, or it is repetetive, then a script can be a useful tool.
+
+A Bash script is interpreted (read and acted upon) by something called an interpreter. There are various interpreters
+on a typical linux system but we have been learning the Bash shell
+
+A Simple Example
+
+echo <message>
+
+user@bash: cat myscript.sh
+#!/bin/bash
+# A simple demonstration script
+# Ryan 19/6/2024
+ 
+echo Here are the files in your current directory:
+ls
+user@bash: ls -l myscript.sh
+-rwxr-xr-x 1 ryan users 2 Jun 4 2012 myscript.sh
+user@bash: ./myscript.sh
+Here are the files in your current directory:
+barry.txt bob example.png firstfile foo1 myoutput video.mpeg
+
+Line 11: Let's start off by having a look at our script. Linux is an extensionless system so it is not required
+         for scripts to have a .sh extension. It is common to put them on however to make them easy to identify.
+Line 12: The very first line of a script should always be this line. This line identifies which interpreter should be used.
+         The first two characters are referred to as a shebang. After that (important, no spaces) is the path to
+         the interpreter.
+Line 13 & 14: Anything following a # is a comment. The interpreter will not run this, it is just here for our benefit.
+              It is good practice to include your name, and the date you wrote the script as well as a one line quick
+              description of what it does at the top of the script.
+Line 16: We'll use a program called echo It will merely print whatever you place after it, as command line arguments,
+         to the screen. Useful for printing messages.
+Line 17: The next step of our script is to print the contents of our current directory.
+Line 18: A script must have the execute permission before it may be run. Here I am just demonstrating that the
+         file does have the right permissions..
+Line 20: Now we run the script.
+Line 21 & 22: The output from running (or executing) our script.
+
+Important Points
+
+The shebang
+
+The very first line of a script should tell the system which interpreter should be used on this file. It is
+important that this is the very first line of the script. It is also important that there are no spaces. The first
+two characters #! (the shebang) tell the system that directly after it will be a path to the interpreter to be used.
+If we don't know where our interpreter is located then we may use a program called which to find out.
+
+which <program>
+
+user@bash: which bash
+/bin/bash
+user@bash: which ls
+/usr/bin/ls
+
+The name
+
+Linux is an extensionless system. That means we may call our script whatever we like and it will not affect it's
+running in any way. While it is typical to put a .sh extension on our scripts, this is purely for convenience.
+
+Comments
+
+A comment is just a note in the script that does not get run, it is merely there for your benefit. Comments are
+easy to put in, all you need to do is place a hash ( # ) then anything after that is considered a comment.
+
+Why the ./ ?
+
+When we type a command on the command line, the system runs through a preset series of directories, looking for
+the program we specified. We may find out these directories by looking at a particular variable PATH
+
+The system will look in the first directory and if it finds the program it will run it, if not it will check the second
+directory and so on. Directories are separated by a colon ( : ).
+
+The system will not look in any directories apart from these, it won't even look in your current directory.
+We can override this behaviour however by supplying a path.
+
+Permissions 
+
+chmod 755
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Variables
+
+When we set a variable, we specify it's name, followed directly by an equals sign ( = ) followed directly by the value.
+(So, no spaces on either side of the = sign.)
+When we refer to a variable, we must place a dollar sign ( $ ) before the variable name.
+
+variable.sh script
+
+Command line arguments and More
+When we run a script, there are several variables that get set automatically for us. Here are some of them:
+
+$0 - The name of the script.
+$1 - $9 - Any command line arguments given to the script. $1 is the first argument, $2 the second and so on.
+$# - How many command line arguments were given to the script.
+$* - All of the command line arguments.
+
+#!/bin/bash
+# A simple demonstration of variables
+# Ryan 19/6/2024
+ 
+echo My name is $0 and I have been given $# command line arguments
+echo Here they are: $*
+echo And the 2nd command line argument is $2
+
+user@bash: ./moreVar.sh bob fred sally
+My name is morevariables.sh and I have been given 3 command line arguments
+Here they are: bob fred sally
+And the 2nd command line argument is fred
+
+Back ticks
+
+It is also possible to save the output of a command to a variable and the mechanism we use for that is the backtick ( ` ).
+
+#!/bin/bash
+# A simple demonstration of using backticks
+# Ryan 19/6/2024
+ 
+lines=`cat $1 | wc -l`
+echo The number of lines in the file $1 is $lines
+
+user@bash: ./backticks.sh testfile.txt
+The number of lines in the file testfile.txt is 12
+
+A Sample Backup script
+
+#!/bin/bash
+# Backs up a single project directory
+# Ryan 19/6/2024
+ 
+date=`date +%F`
+mkdir ~/projectbackups/$1_$date
+cp -R ~/projects/$1 ~/projectbackups/$1_$date
+echo Backup of $1 completed
+
+./projectbackup.sh ocelot
+Backup of ocelot completed
+
+#!
+Shebang. Indicates which interpreter a script should be run with.
+
+echo
+Print a message to the screen.
+
+which
+Tells you the path to a particular program.
+
+$
+Placed before a variable name when we are referring to it's value.
+
+` `
+Backticks. Used to save the output of a program into a variable.
+
+date
+Prints the date.
+
+if [ ] then else fi
+Perform basic conditional logic.

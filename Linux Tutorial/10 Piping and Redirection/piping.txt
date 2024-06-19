@@ -1,0 +1,38 @@
+Piping
+
+A mechanism for sending data from one program to another. It's called piping and the operator we use is ( | ).
+
+user@bash: ls
+barry.txt bob example.png firstfile foo1 myoutput video.mpeg
+user@bash: ls | head -3
+barry.txt
+bob
+example.png
+user@bash: ls | head -3 | tail -1
+example.png
+
+Combine pipes and redirection
+
+user@bash: ls | head -3 | tail -1 > myoutput
+user@bash: cat myoutput
+example.png
+
+Identify all files in your home directory which the group has write permission for.
+
+user@bash: ls -l ~ | grep '^.....w'
+drwxrwxr-x 3 ryan users 4096 Jan 21 04:12 dropbox
+
+>
+Save output to a file.
+
+>>
+Append output to a file.
+
+<
+Read input from a file.
+
+2>
+Redirect error messages.
+
+|
+Send the output from one program as input to another program.
