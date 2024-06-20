@@ -1,0 +1,46 @@
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw for bandit5
+
+bandit4@bandit:~$ ls
+inhere
+bandit4@bandit:~$ cd inhere/
+bandit4@bandit:~/inhere$ ls -la
+total 48
+drwxr-xr-x 2 root    root    4096 Jun 20 04:07 .
+drwxr-xr-x 3 root    root    4096 Jun 20 04:07 ..
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file00
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file01
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file02
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file03
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file04
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file05
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file06
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file07
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file08
+-rw-r----- 1 bandit5 bandit4   33 Jun 20 04:07 -file09
+bandit4@bandit:~/inhere$ find . -type f
+./-file08
+./-file06
+./-file09
+./-file01
+./-file03
+./-file04
+./-file00
+./-file07
+./-file05
+./-file02
+bandit4@bandit:~/inhere$ find . -type f -exec file {} \
+> ^C
+bandit4@bandit:~/inhere$ find . -type f -exec file {} \;
+./-file08: data
+./-file06: data
+./-file09: data
+./-file01: data
+./-file03: data
+./-file04: data
+./-file00: data
+./-file07: ASCII text
+./-file05: data
+./-file02: data
+bandit4@bandit:~/inhere$ cat ./-file07
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+bandit4@bandit:~/inhere$ 

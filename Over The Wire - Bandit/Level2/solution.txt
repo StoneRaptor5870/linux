@@ -1,0 +1,5 @@
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx for bandit3
+
+commands used:
+ls
+cat ./file\ name

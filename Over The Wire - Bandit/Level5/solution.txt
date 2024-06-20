@@ -1,0 +1,34 @@
+HWasnPhtq9AVKe0dmk45nxy20cvUa6EG for bandit6
+
+bandit5@bandit:~$ ls
+inhere
+bandit5@bandit:~$ cd inhere/
+bandit5@bandit:~/inhere$ ls -la
+total 88
+drwxr-x--- 22 root bandit5 4096 Jun 20 04:07 .
+drwxr-xr-x  3 root root    4096 Jun 20 04:07 ..
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere00
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere01
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere02
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere03
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere04
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere05
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere06
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere07
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere08
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere09
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere10
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere11
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere12
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere13
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere14
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere15
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere16
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere17
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere18
+drwxr-x---  2 root bandit5 4096 Jun 20 04:07 maybehere19
+bandit5@bandit:~/inhere$ find . -type f -size 1033c -exec file {} \; | grep 'ASCII text'
+./maybehere07/.file2: ASCII text, with very long lines (1000)
+bandit5@bandit:~/inhere$ cd ./maybehere07
+bandit5@bandit:~/inhere/maybehere07$ cat ./.file2
+HWasnPhtq9AVKe0dmk45nxy20cvUa6EG

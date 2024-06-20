@@ -1,4 +1,4 @@
-263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+263JGJPfgU6LtdEvgfWU1XP5yac29mFx for bandit2
 
 ls
 cat ./-  "special character access"

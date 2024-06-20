@@ -1,4 +1,4 @@
-ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If for bandit1
 
 ssh username@host -p port
 sshpass -p password ssh username@host -p port

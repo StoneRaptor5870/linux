@@ -1,0 +1,7 @@
+dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr for bandit11
+
+bandit10@bandit:~$ ls
+data.txt
+bandit10@bandit:~$ base64 -d data.txt | strings | sort | uniq -u
+The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+bandit10@bandit:~$
