@@ -1,0 +1,26 @@
+tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q for bandit22
+
+bandit21@bandit:/etc/cron.d$ cd /etc/cron.d/
+bandit21@bandit:/etc/cron.d$ ls
+cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir  sysstat
+bandit21@bandit:/etc/cron.d$ ls -la
+total 44
+drwxr-xr-x   2 root root  4096 Jun 20 04:08 .
+drwxr-xr-x 121 root root 12288 Jun 20 21:05 ..
+-rw-r--r--   1 root root   120 Jun 20 04:07 cronjob_bandit22
+-rw-r--r--   1 root root   122 Jun 20 04:07 cronjob_bandit23
+-rw-r--r--   1 root root   120 Jun 20 04:07 cronjob_bandit24
+-rw-r--r--   1 root root   201 Apr  8 14:38 e2scrub_all
+-rwx------   1 root root    52 Jun 20 04:08 otw-tmp-dir
+-rw-r--r--   1 root root   102 Mar 31 00:06 .placeholder
+-rw-r--r--   1 root root   396 Jan  9 20:31 sysstat
+bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit21@bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+bandit21@bandit:/etc/cron.d$

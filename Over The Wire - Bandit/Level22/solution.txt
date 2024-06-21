@@ -1,0 +1,70 @@
+0Zf11ioIjMVN551jX3CmStKLYqjk54Ga for bandit23
+
+bandit22@bandit:~$ cd /etc/cron.d/
+bandit22@bandit:/etc/cron.d$ ls
+cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  e2scrub_all  otw-tmp-dir  sysstat
+bandit22@bandit:/etc/cron.d$ ls -la
+total 44
+drwxr-xr-x   2 root root  4096 Jun 20 04:08 .
+drwxr-xr-x 121 root root 12288 Jun 20 21:05 ..
+-rw-r--r--   1 root root   120 Jun 20 04:07 cronjob_bandit22
+-rw-r--r--   1 root root   122 Jun 20 04:07 cronjob_bandit23
+-rw-r--r--   1 root root   120 Jun 20 04:07 cronjob_bandit24
+-rw-r--r--   1 root root   201 Apr  8 14:38 e2scrub_all
+-rwx------   1 root root    52 Jun 20 04:08 otw-tmp-dir
+-rw-r--r--   1 root root   102 Mar 31 00:06 .placeholder
+-rw-r--r--   1 root root   396 Jan  9 20:31 sysstat
+bandit22@bandit:/etc/cron.d$ cat cronjob_bandit23
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+bandit22@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit23.sh
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+bandit22@bandit:/etc/cron.d$ cat /tmp/$mytarget
+cat: /tmp/: Permission denied
+bandit22@bandit:/etc/cron.d$ whoami
+bandit22
+bandit22@bandit:/etc/cron.d$ cat /etc/bandit_pass/bandit22
+tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+bandit22@bandit:/etc/cron.d$ vi /usr/bin/cronjob_bandit23.sh
+bandit22@bandit:/etc/cron.d$ cd ../..
+bandit22@bandit:/$ pwd
+/
+bandit22@bandit:/$ cd home/bandit22
+bandit22@bandit:~$ cd /tmp
+bandit22@bandit:/tmp$ ls -la
+ls: cannot open directory '.': Permission denied
+bandit22@bandit:/tmp$ cd /home/bandit22
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ 
+bandit22@bandit:~$ cd /etc/cron.d/
+bandit22@bandit:/etc/cron.d$ myname=bandit22
+bandit22@bandit:/etc/cron.d$ echo I am user bandit23 | md5sum | cut -d ' ' -f
+cut: option requires an argument -- 'f'
+Try 'cut --help' for more information.
+bandit22@bandit:/etc/cron.d$ echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+8ca319486bfbbc3663ea0fbe81326349
+bandit22@bandit:/etc/cron.d$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+0Zf11ioIjMVN551jX3CmStKLYqjk54Ga
+bandit22@bandit:/etc/cron.d$

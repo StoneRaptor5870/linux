@@ -1,0 +1,20 @@
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt for bandit21
+
+1st terminal window
+bandit20@bandit:~$ ls
+suconnect
+bandit20@bandit:~$ ./suconnect 
+Usage: ./suconnect <portnumber>
+This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+bandit20@bandit:~$ ./suconnect 2222
+Read: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+Password matches, sending next password
+bandit20@bandit:~$
+
+2nd terminal window
+bandit20@bandit:~$ nc -lvp 2222
+Listening on 0.0.0.0 2222
+Connection received on localhost 38590
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+bandit20@bandit:~$
