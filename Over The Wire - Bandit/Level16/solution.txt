@@ -1,0 +1,249 @@
+EReVavePLFHtFlFsjn3hyzMlvSuSAcRD for bandit17
+
+bandit16@bandit:~$ nmap localhost -p 31000-32000
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-06-21 11:31 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00020s latency).
+Not shown: 996 closed tcp ports (conn-refused)
+PORT      STATE SERVICE
+31046/tcp open  unknown
+31518/tcp open  unknown
+31691/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.08 seconds
+bandit16@bandit:~$ nmap localhost -p 31046,31518,31691,31790,31960 -sV -T4
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-06-21 11:32 UTC
+Stats: 0:01:20 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 80.00% done; ETC: 11:33 (0:00:20 remaining)
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00039s latency).
+
+PORT      STATE SERVICE     VERSION
+31046/tcp open  echo
+31518/tcp open  ssl/echo
+31691/tcp open  echo
+31790/tcp open  ssl/unknown
+31960/tcp open  echo
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port31790-TCP:V=7.94SVN%T=SSL%I=7%D=6/21%Time=667564D5%P=x86_64-pc-linu
+SF:x-gnu%r(GenericLines,32,"Wrong!\x20Please\x20enter\x20the\x20correct\x2
+SF:0current\x20password\.\n")%r(GetRequest,32,"Wrong!\x20Please\x20enter\x
+SF:20the\x20correct\x20current\x20password\.\n")%r(HTTPOptions,32,"Wrong!\
+SF:x20Please\x20enter\x20the\x20correct\x20current\x20password\.\n")%r(RTS
+SF:PRequest,32,"Wrong!\x20Please\x20enter\x20the\x20correct\x20current\x20
+SF:password\.\n")%r(Help,32,"Wrong!\x20Please\x20enter\x20the\x20correct\x
+SF:20current\x20password\.\n")%r(FourOhFourRequest,32,"Wrong!\x20Please\x2
+SF:0enter\x20the\x20correct\x20current\x20password\.\n")%r(LPDString,32,"W
+SF:rong!\x20Please\x20enter\x20the\x20correct\x20current\x20password\.\n")
+SF:%r(SIPOptions,32,"Wrong!\x20Please\x20enter\x20the\x20correct\x20curren
+SF:t\x20password\.\n");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 155.42 seconds
+bandit16@bandit:~$ 
+bandit16@bandit:~$ 
+bandit16@bandit:~$ 
+bandit16@bandit:~$ cat /etc/bandit_pass/bandit16
+kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+bandit16@bandit:~$ 
+bandit16@bandit:~$ 
+bandit16@bandit:~$ 
+bandit16@bandit:~$ openssl s_client -connect localhost:31790 -ign_eof
+CONNECTED(00000003)
+Can't use SSL_get_servername
+depth=0 CN = SnakeOil
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 CN = SnakeOil
+verify return:1
+---
+Certificate chain
+ 0 s:CN = SnakeOil
+   i:CN = SnakeOil
+   a:PKEY: rsaEncryption, 4096 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Jun 10 03:59:50 2024 GMT; NotAfter: Jun  8 03:59:50 2034 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIFBzCCAu+gAwIBAgIUBLz7DBxA0IfojaL/WaJzE6Sbz7cwDQYJKoZIhvcNAQEL
+BQAwEzERMA8GA1UEAwwIU25ha2VPaWwwHhcNMjQwNjEwMDM1OTUwWhcNMzQwNjA4
+MDM1OTUwWjATMREwDwYDVQQDDAhTbmFrZU9pbDCCAiIwDQYJKoZIhvcNAQEBBQAD
+ggIPADCCAgoCggIBANI+P5QXm9Bj21FIPsQqbqZRb5XmSZZJYaam7EIJ16Fxedf+
+jXAv4d/FVqiEM4BuSNsNMeBMx2Gq0lAfN33h+RMTjRoMb8yBsZsC063MLfXCk4p+
+09gtGP7BS6Iy5XdmfY/fPHvA3JDEScdlDDmd6Lsbdwhv93Q8M6POVO9sv4HuS4t/
+jEjr+NhE+Bjr/wDbyg7GL71BP1WPZpQnRE4OzoSrt5+bZVLvODWUFwinB0fLaGRk
+GmI0r5EUOUd7HpYyoIQbiNlePGfPpHRKnmdXTTEZEoxeWWAaM1VhPGqfrB/Pnca+
+vAJX7iBOb3kHinmfVOScsG/YAUR94wSELeY+UlEWJaELVUntrJ5HeRDiTChiVQ++
+wnnjNbepaW6shopybUF3XXfhIb4NvwLWpvoKFXVtcVjlOujF0snVvpE+MRT0wacy
+tHtjZs7Ao7GYxDz6H8AdBLKJW67uQon37a4MI260ADFMS+2vEAbNSFP+f6ii5mrB
+18cY64ZaF6oU8bjGK7BArDx56bRc3WFyuBIGWAFHEuB948BcshXY7baf5jjzPmgz
+mq1zdRthQB31MOM2ii6vuTkheAvKfFf+llH4M9SnES4NSF2hj9NnHga9V08wfhYc
+x0W6qu+S8HUdVF+V23yTvUNgz4Q+UoGs4sHSDEsIBFqNvInnpUmtNgcR2L5PAgMB
+AAGjUzBRMB0GA1UdDgQWBBTPo8kfze4P9EgxNuyk7+xDGFtAYzAfBgNVHSMEGDAW
+gBTPo8kfze4P9EgxNuyk7+xDGFtAYzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3
+DQEBCwUAA4ICAQAKHomtmcGqyiLnhziLe97Mq2+Sul5QgYVwfx/KYOXxv2T8ZmcR
+Ae9XFhZT4jsAOUDK1OXx9aZgDGJHJLNEVTe9zWv1ONFfNxEBxQgP7hhmDBWdtj6d
+taqEW/Jp06X+08BtnYK9NZsvDg2YRcvOHConeMjwvEL7tQK0m+GVyQfLYg6jnrhx
+egH+abucTKxabFcWSE+Vk0uJYMqcbXvB4WNKz9vj4V5Hn7/DN4xIjFko+nREw6Oa
+/AUFjNnO/FPjap+d68H1LdzMH3PSs+yjGid+6Zx9FCnt9qZydW13Miqg3nDnODXw
++Z682mQFjVlGPCA5ZOQbyMKY4tNazG2n8qy2famQT3+jF8Lb6a4NGbnpeWnLMkIu
+jWLWIkA9MlbdNXuajiPNVyYIK9gdoBzbfaKwoOfSsLxEqlf8rio1GGcEV5Hlz5S2
+txwI0xdW9MWeGWoiLbZSbRJH4TIBFFtoBG0LoEJi0C+UPwS8CDngJB4TyrZqEld3
+rH87W+Et1t/Nepoc/Eoaux9PFp5VPXP+qwQGmhir/hv7OsgBhrkYuhkjxZ8+1uk7
+tUWC/XM0mpLoxsq6vVl3AJaJe1ivdA9xLytsuG4iv02Juc593HXYR8yOpow0Eq2T
+U5EyeuFg5RXYwAPi7ykw1PW7zAPL4MlonEVz+QXOSx6eyhimp1VZC11SCg==
+-----END CERTIFICATE-----
+subject=CN = SnakeOil
+issuer=CN = SnakeOil
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 2103 bytes and written 373 bytes
+Verification error: self-signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Server public key is 4096 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self-signed certificate)
+---
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 8284186FC602B208B5002BFFDF5854AF35ECCAEBBF39D91A162E17FCDFB8248C
+    Session-ID-ctx: 
+    Resumption PSK: ADDA47A4E650E4570DBB304CC8166C32C99F75775836AA0FE58849EA0C581410845309FA62662CFD2FCF934783836FE0
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - 17 1f c7 90 ef 1a 4b fd-e6 3b 76 df 12 a7 62 21   ......K..;v...b!
+    0010 - 6a 71 b6 5c 41 c6 9b 48-ee 7d 80 ac 48 38 b3 c2   jq.\A..H.}..H8..
+    0020 - d2 68 2c 6a 74 90 3f b6-d6 f1 9f 63 75 02 62 2e   .h,jt.?....cu.b.
+    0030 - 2a f5 59 90 31 fe 1d 6c-6f 15 49 64 23 51 ca 30   *.Y.1..lo.Id#Q.0
+    0040 - c9 dd 10 ce be 22 45 d6-f6 3a d0 2b 8c 47 85 fc   ....."E..:.+.G..
+    0050 - ac 19 13 42 ee 81 a6 d7-eb 4f 0d 2a bc 45 bb a0   ...B.....O.*.E..
+    0060 - 96 d2 b2 5e d3 e4 d3 39-ed 48 4d 6f aa c3 cc 55   ...^...9.HMo...U
+    0070 - 73 6e bf f4 fb 6c a4 69-54 a0 e4 e8 1b 5d 52 ef   sn...l.iT....]R.
+    0080 - b2 cc a8 ff d7 28 df b3-7a c6 8a 42 0c 1c 61 3c   .....(..z..B..a<
+    0090 - b3 cc 2e e5 16 42 ba 14-69 d6 30 0d 07 f7 52 01   .....B..i.0...R.
+    00a0 - 98 bf 5f 48 3c 11 15 06-0c 60 88 ab 66 30 50 c5   .._H<....`..f0P.
+    00b0 - 0b 99 34 c7 a8 83 ad d4-dc 56 4f 8e 21 13 95 b0   ..4......VO.!...
+    00c0 - 25 25 5e c5 83 be 0b 3f-aa b6 43 b5 07 00 46 ec   %%^....?..C...F.
+    00d0 - 3d cf 89 f6 76 1c a1 a3-01 e2 62 bb c3 d5 37 a2   =...v.....b...7.
+
+    Start Time: 1718969739
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 89B4DFDDFD252BBDAB3C04E286D9CA2731E3F3A1DA1CC23505EA7981A77E3F1C
+    Session-ID-ctx: 
+    Resumption PSK: FD9B2337DD1BF0DC63404AC7F5497F8C1DB752D75D583C330CDF940EBD7308ED1187E769EB358F972A1E6F2BE6910EC6
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - 17 1f c7 90 ef 1a 4b fd-e6 3b 76 df 12 a7 62 21   ......K..;v...b!
+    0010 - d4 3d 7e be 08 68 7d e2-64 a3 39 85 b9 4e fd 41   .=~..h}.d.9..N.A
+    0020 - 5b ae 57 fe 15 f1 75 49-c4 8a 37 5c 93 03 ea ea   [.W...uI..7\....
+    0030 - 66 59 2f 13 bb d1 0e ae-9b 88 7e f3 63 d6 4f f0   fY/.......~.c.O.
+    0040 - ca 26 93 46 97 81 0d 6c-fe db 35 b6 98 55 6f 31   .&.F...l..5..Uo1
+    0050 - 42 92 3c 3d b9 0c fc bc-54 fd 58 91 4d 6a e6 38   B.<=....T.X.Mj.8
+    0060 - 9d b8 71 21 ea 83 ab b9-30 b8 dd 8f 76 c8 8f b6   ..q!....0...v...
+    0070 - fb 33 12 1c a2 52 66 9b-10 99 d0 bb 2b 14 50 64   .3...Rf.....+.Pd
+    0080 - ef e7 86 b0 eb 0a bc 69-2c 93 11 2b e0 c2 ea 8b   .......i,..+....
+    0090 - da d2 ae 72 83 ae 5f 21-c4 6d 81 9f 60 e9 74 10   ...r.._!.m..`.t.
+    00a0 - 65 40 be 9e ca 49 42 e9-c6 7a 71 2a 4c bb 4a 5d   e@...IB..zq*L.J]
+    00b0 - b2 74 30 a1 25 8e 7b 8a-ef 01 0e 15 4c b2 4f 17   .t0.%.{.....L.O.
+    00c0 - 57 e3 f6 90 7f d4 27 ad-13 76 db 0c 09 58 79 2a   W.....'..v...Xy*
+    00d0 - bd fb 87 74 04 a0 36 95-e9 2b d4 13 52 39 e8 9e   ...t..6..+..R9..
+
+    Start Time: 1718969739
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+Correct!
+-----BEGIN RSA PRIVATE KEY-----
+
+-----END RSA PRIVATE KEY-----
+
+closed
+bandit16@bandit:~$ 
+bandit16@bandit:~$ 
+bandit16@bandit:~$ 
+bandit16@bandit:~$ cd /tmp
+bandit16@bandit:/tmp$ mkdir tmp.5870
+mkdir: cannot create directory ‘tmp.5870’: File exists
+bandit16@bandit:/tmp$ cd tmp.5870
+bandit16@bandit:/tmp/tmp.5870$ ls
+data5.bin  data6.bin  data8.bin  data.txt  hexdump.tar
+bandit16@bandit:/tmp/tmp.5870$ nano rsafile
+Unable to create directory /home/bandit16/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+bandit16@bandit:/tmp/tmp.5870$ ls
+data5.bin  data6.bin  data8.bin  data.txt  hexdump.tar
+bandit16@bandit:/tmp/tmp.5870$ vi rsafile
+
+[1]+  Stopped                 vi rsafile
+bandit16@bandit:/tmp/tmp.5870$ ls
+data5.bin  data6.bin  data8.bin  data.txt  hexdump.tar
+bandit16@bandit:/tmp/tmp.5870$ nano rsafile
+Unable to create directory /home/bandit16/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+bandit16@bandit:/tmp/tmp.5870$ nano rsafile
+Unable to create directory /home/bandit16/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+bandit16@bandit:/tmp/tmp.5870$ ls
+data5.bin  data6.bin  data8.bin  data.txt  hexdump.tar
+bandit16@bandit:/tmp/tmp.5870$ touch rsafile
+touch: cannot touch 'rsafile': Permission denied
+bandit16@bandit:/tmp/tmp.5870$ ls -l rsafile
+ls: cannot access 'rsafile': No such file or directory
+bandit16@bandit:/tmp/tmp.5870$ cd ..
+bandit16@bandit:/tmp$ mkdir tmp.stoneraptor
+bandit16@bandit:/tmp$ touch /tmp/tmp.stoneraptor/rsafile
+bandit16@bandit:/tmp$ cd tmp.stoneraptor
+bandit16@bandit:/tmp/tmp.stoneraptor$ ls
+rsafile
+bandit16@bandit:/tmp/tmp.stoneraptor$ ls -l rsafile
+-rw-rw-r-- 1 bandit16 bandit16 0 Jun 21 11:49 rsafile
+bandit16@bandit:/tmp/tmp.stoneraptor$ chmod u+w rsafile
+bandit16@bandit:/tmp/tmp.stoneraptor$ ls -l
+total 0
+-rw-rw-r-- 1 bandit16 bandit16 0 Jun 21 11:49 rsafile
+bandit16@bandit:/tmp/tmp.stoneraptor$ vi rsafile 
+bandit16@bandit:/tmp/tmp.stoneraptor$ ls
+rsafile
+bandit16@bandit:/tmp/tmp.stoneraptor$ chmod 600 rsafile 
+bandit16@bandit:/tmp/tmp.stoneraptor$ ls -l
+total 4
+-rw------- 1 bandit16 bandit16 1675 Jun 21 11:50 rsafile
+bandit16@bandit:/tmp/tmp.stoneraptor$ ssh -i rsafile bandit17@localhost -p 2220
+bandit17@bandit:~$
