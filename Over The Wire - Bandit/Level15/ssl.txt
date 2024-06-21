@@ -1,0 +1,91 @@
+openssl s_client Command
+openssl s_client is a tool that can be used to establish SSL/TLS connections to a server and view/debug the SSL/TLS handshake and communication. It's often used for testing and debugging SSL/TLS connections.
+
+-ign_eof Option
+The -ign_eof option tells openssl s_client to ignore the EOF (End Of File) signal. By default, when s_client encounters an EOF from the server, it will close the connection. The -ign_eof option prevents this behavior, allowing you to keep the connection open and continue interacting with the server.
+
+HEARTBEATING and Read R BLOCK
+These messages are related to the TLS Heartbeat extension, which was the source of the infamous Heartbleed vulnerability. The messages indicate that the server is sending heartbeat requests or responses. They can be safely ignored in most testing scenarios but are an indication of active heartbeat functionality.
+
+CONNECTED COMMANDS Section
+The CONNECTED COMMANDS section in the openssl s_client manpage describes commands you can use while connected to a server using s_client. These commands allow you to interact with the connection in various ways.
+
+Common Connected Commands:
+R: Renegotiate the SSL/TLS session.
+Q: Quit the connection.
+B: Send a heartbeat request.
+Practical Usage Example
+Here’s how you can use the openssl s_client command with the -ign_eof option and interact with the server using connected commands:
+
+Connect to a Server:
+
+sh
+Copy code
+openssl s_client -connect example.com:443 -ign_eof
+This command connects to example.com on port 443 and ignores the EOF signal, keeping the connection open.
+
+Interacting with the Connection:
+While connected, you can use the following commands:
+
+R: Renegotiate the session.
+Type R and press Enter.
+Q: Quit the connection.
+Type Q and press Enter.
+B: Send a heartbeat request.
+Type B and press Enter.
+Example Session
+Here’s what an interactive session might look like:
+
+sh
+Copy code
+openssl s_client -connect example.com:443 -ign_eof
+Upon connecting, you might see output similar to this:
+
+yaml
+Copy code
+CONNECTED(00000003)
+depth=2 O = Digital Signature Trust Co., CN = DST Root CA X3
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = Let's Encrypt Authority X3
+verify return:1
+depth=0 CN = example.com
+verify return:1
+---
+Certificate chain
+ 0 s:/CN=example.com
+   i:/C=US/O=Let's Encrypt/CN=Let's Encrypt Authority X3
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+subject=/CN=example.com
+issuer=/C=US/O=Let's Encrypt/CN=Let's Encrypt Authority X3
+---
+No client certificate CA names sent
+---
+SSL handshake has read 3499 bytes and written 452 bytes
+Verification: OK
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES128-GCM-SHA256
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES128-GCM-SHA256
+    Session-ID: ...
+    Session-ID-ctx: 
+    Master-Key: ...
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    Start Time: ...
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+---
+While connected, you can type the commands R, Q, or B followed by pressing Enter to renegotiate, quit, or send a heartbeat, respectively.
+
+This setup and the provided commands will help you debug and interact with SSL/TLS connections more effectively.

@@ -1,0 +1,79 @@
+FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn for bandit13
+
+bandit12@bandit:~$ ls
+data.txt
+bandit12@bandit:~$ pwd
+/home/bandit12
+bandit12@bandit:~$ cd /tmp
+bandit12@bandit:/tmp$ mkdir tmp.5870
+bandit12@bandit:/tmp$ cd tmp.5870
+bandit12@bandit:/tmp/tmp.5870$ ls
+bandit12@bandit:/tmp/tmp.5870$ cd ..
+bandit12@bandit:/tmp$ cd ..
+bandit12@bandit:/$ pwd
+/
+bandit12@bandit:/$ cd home/bandit12
+bandit12@bandit:~$ ls
+data.txt
+bandit12@bandit:~$ cp data.txt /tmp/tmp.5870
+bandit12@bandit:~$ cd /tmp/tmp.5870
+bandit12@bandit:/tmp/tmp.5870$ ls
+data.txt
+bandit12@bandit:/tmp/tmp.5870$ cat data.txt | xxd -r > hexdump
+bandit12@bandit:/tmp/tmp.5870$ ls
+data.txt  hexdump
+bandit12@bandit:/tmp/tmp.5870$ file hexdump 
+hexdump: gzip compressed data, was "data2.bin", last modified: Thu Jun 20 04:06:52 2024, max compression, from Unix, original size modulo 2^32 577
+bandit12@bandit:/tmp/tmp.5870$ mv hexdump hexdump.gz
+bandit12@bandit:/tmp/tmp.5870$ ls
+data.txt  hexdump.gz
+bandit12@bandit:/tmp/tmp.5870$ gzip -d hexdump.gz
+bandit12@bandit:/tmp/tmp.5870$ ls
+data.txt  hexdump
+bandit12@bandit:/tmp/tmp.5870$ file hexdump 
+hexdump: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/tmp.5870$ mv hexdump hexdump.bz2
+bandit12@bandit:/tmp/tmp.5870$ bzip2 -d hexdump.bz2 
+bandit12@bandit:/tmp/tmp.5870$ file hexdump 
+hexdump: gzip compressed data, was "data4.bin", last modified: Thu Jun 20 04:06:52 2024, max compression, from Unix, original size modulo 2^32 20480
+bandit12@bandit:/tmp/tmp.5870$ mv hexdump hexdump.gz
+bandit12@bandit:/tmp/tmp.5870$ gzip -d hexdump.gz
+bandit12@bandit:/tmp/tmp.5870$ file hexdump 
+hexdump: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/tmp.5870$ ls
+data.txt  hexdump
+bandit12@bandit:/tmp/tmp.5870$ mv hexdump hexdump.tar
+bandit12@bandit:/tmp/tmp.5870$ ls
+data.txt  hexdump.tar
+bandit12@bandit:/tmp/tmp.5870$ tar -xf hexdump.tar 
+bandit12@bandit:/tmp/tmp.5870$ ls
+data5.bin  data.txt  hexdump.tar
+bandit12@bandit:/tmp/tmp.5870$ file data5.bin
+data5.bin: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/tmp.5870$ tar -xvf data5.bin
+data6.bin
+bandit12@bandit:/tmp/tmp.5870$ file data6.bin
+data6.bin: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/tmp.5870$ mv data6.bin data6.bin.bz2
+bandit12@bandit:/tmp/tmp.5870$ bzip2 -d data6.bin.bz2 
+bandit12@bandit:/tmp/tmp.5870$ ls
+data5.bin  data6.bin  data.txt  hexdump.tar
+bandit12@bandit:/tmp/tmp.5870$ filw data6.bin
+Command 'filw' not found, did you mean:
+  command 'file' from deb file (1:5.45-2)
+Try: apt install <deb name>
+bandit12@bandit:/tmp/tmp.5870$ file data6.bin
+data6.bin: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/tmp.5870$ tar -xvf data6.bin
+data8.bin
+bandit12@bandit:/tmp/tmp.5870$ file data8.bin
+data8.bin: gzip compressed data, was "data9.bin", last modified: Thu Jun 20 04:06:52 2024, max compression, from Unix, original size modulo 2^32 49
+bandit12@bandit:/tmp/tmp.5870$ mv data8.bin data8.bin.gz
+bandit12@bandit:/tmp/tmp.5870$ gzip -d data8.bin.gz 
+bandit12@bandit:/tmp/tmp.5870$ ls
+data5.bin  data6.bin  data8.bin  data.txt  hexdump.tar
+bandit12@bandit:/tmp/tmp.5870$ file data8.bin
+data8.bin: ASCII text
+bandit12@bandit:/tmp/tmp.5870$ cat data8.bin
+The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+bandit12@bandit:/tmp/tmp.5870$
