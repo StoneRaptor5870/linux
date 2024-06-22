@@ -1,0 +1,4 @@
+3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH for Natas3
+
+image was attcached with route files/pixel.png, routed to http://natas0.natas.labs.overthewire.org/files
+and found user.txt file containing the password.

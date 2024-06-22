@@ -1,0 +1,3 @@
+QryZXc2e0zahULdHrtHxzyYkj59kUxLQ for Natas4
+
+web crawler file robots.txt was hiding s3cr3t route and it had the user.txt file containing the password.
