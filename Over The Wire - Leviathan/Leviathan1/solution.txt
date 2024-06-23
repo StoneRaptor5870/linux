@@ -1,0 +1,25 @@
+NsN1HwFoyN for Leviathan2
+
+leviathan1@gibson:~$ ls -a
+.  ..  .bash_logout  .bashrc  check  .profile
+leviathan1@gibson:~$ ./check 
+password: 1234
+Wrong password, Good Bye ...
+leviathan1@gibson:~$ ltrace ./check 
+__libc_start_main(0x80490ed, 1, 0xffffd494, 0 <unfinished ...>
+printf("password: ")                                                                    = 10
+getchar(0, 0, 0x786573, 0x646f67password: 1234
+)                                                       = 49
+getchar(0, 49, 0x786573, 0x646f67)                                                      = 50
+getchar(0, 0x3231, 0x786573, 0x646f67)                                                  = 51
+strcmp("123", "sex")                                                                    = -1
+puts("Wrong password, Good Bye ..."Wrong password, Good Bye ...
+)                                                    = 29
++++ exited (status 0) +++
+leviathan1@gibson:~$ ./check 
+password: sex
+$ whoami
+leviathan2
+$ cat /etc/leviathan_pass/leviathan2
+NsN1HwFoyN
+$ 

@@ -1,0 +1,28 @@
+qEs5Io5yM8 for Leviathan7
+
+leviathan6@gibson:~$ ls -la
+total 36
+drwxr-xr-x  2 root       root        4096 Jun 20 04:07 .
+drwxr-xr-x 83 root       root        4096 Jun 20 04:08 ..
+-rw-r--r--  1 root       root         220 Mar 31 08:41 .bash_logout
+-rw-r--r--  1 root       root        3771 Mar 31 08:41 .bashrc
+-r-sr-x---  1 leviathan7 leviathan6 15032 Jun 20 04:07 leviathan6
+-rw-r--r--  1 root       root         807 Mar 31 08:41 .profile
+leviathan6@gibson:~$ ./leviathan6 1234
+Wrong
+leviathan6@gibson:~$
+
+made a script in /tmp 
+brute.sh
+#!/bin/bash
+
+for a in {0000..9999}
+do
+~/leviathan6 $a
+done
+gave directory and file permissons
+
+$ whoami 
+leviathan7
+$ cat /etc/leviathan_pass/leviathan7
+qEs5Io5yM8
