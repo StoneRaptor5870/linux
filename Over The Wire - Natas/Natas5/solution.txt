@@ -1,0 +1,4 @@
+0RoJwHdSKWFTYR5WuiAewauSuNaBXned for Natas6
+
+Intercepted the request and changed the loggedin key from loggedin=0 to loggedin=1 and got the token.
+Used burp suite to intercept the request.

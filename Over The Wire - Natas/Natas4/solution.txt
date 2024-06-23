@@ -1,0 +1,4 @@
+0n35PkggAPm2zbEpOU802c0x0Msn1ToK for Natas5
+
+Intercepted the request and changed the referrer to natas5 and got the token.
+Used burp suite to intercept the request.

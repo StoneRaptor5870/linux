@@ -1,0 +1,4 @@
+xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q for Natas8
+
+In dev tools page route was given /etc/natas_webpass/natas8, 
+http://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8
