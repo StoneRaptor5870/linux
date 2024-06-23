@@ -1,0 +1,3 @@
+UJdqkK1pTu6VLt9UHWAgRZz6sVUZ3lEk for Natas11
+
+query injection: .* /etc/natas_webpass/natas11 # which searches everything as grep and comments out the rest of results
