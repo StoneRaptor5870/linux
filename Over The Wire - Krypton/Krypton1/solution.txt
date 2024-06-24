@@ -1,0 +1,51 @@
+ROTTEN for Krypton2
+
+krypton1@bandit:~$ cd /krypton/
+krypton1@bandit:/krypton$ ls -la
+total 36
+drwxr-xr-x  9 root root 4096 Jun 20 04:08 .
+drwxr-xr-x 25 root root 4096 Jun 20 21:05 ..
+drwxr-xr-x  2 root root 4096 Jun 20 04:08 krypton1
+drwxr-xr-x  2 root root 4096 Jun 20 04:08 krypton2
+drwxr-xr-x  2 root root 4096 Jun 20 04:08 krypton3
+drwxr-xr-x  2 root root 4096 Jun 20 04:08 krypton4
+drwxr-xr-x  2 root root 4096 Jun 20 04:08 krypton5
+drwxr-xr-x  3 root root 4096 Jun 20 04:08 krypton6ABCDEFGHIJKLM
+drwxr-xr-x  2 root root 4096 Jun 20 04:08 krypton7
+krypton1@bandit:/krypton$ cd krypton1
+krypton1@bandit:/krypton/krypton1$ ls -la
+total 16
+drwxr-xr-x 2 root     root     4096 Jun 20 04:08 .
+drwxr-xr-x 9 root     root     4096 Jun 20 04:08 ..
+-rw-r----- 1 krypton1 krypton1   26 Jun 20 04:08 krypton2
+-rw-r----- 1 krypton1 krypton1  882 Jun 20 04:08 README
+krypton1@bandit:/krypton/krypton1$ cat README 
+Welcome to Krypton!
+
+This game is intended to give hands on experience with cryptography
+and cryptanalysis.  The levels progress from classic ciphers, to modern,
+easy to harder.
+
+Although there are excellent public tools, like cryptool,to perform
+the simple analysis, we strongly encourage you to try and do these
+without them for now.  We will use them in later excercises.
+
+** Please try these levels without cryptool first **
+
+
+The first level is easy.  The password for level 2 is in the file 
+'krypton2'.  It is 'encrypted' using a simple rotation called ROT13.  
+It is also in non-standard ciphertext format.  When using alpha characters for
+cipher text it is normal to group the letters into 5 letter clusters, 
+regardless of word boundaries.  This helps obfuscate any patterns.
+
+This file has kept the plain text word boundaries and carried them to
+the cipher text.
+
+Enjoy!
+krypton1@bandit:/krypton/krypton1$ cat krypton2 
+YRIRY GJB CNFFJBEQ EBGGRA
+krypton1@bandit:/krypton/krypton1$ echo ^C
+krypton1@bandit:/krypton/krypton1$ echo YRIRY GJB CNFFJBEQ EBGGRA | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+LEVEL TWO PASSWORD ROTTEN
+krypton1@bandit:/krypton/krypton1$

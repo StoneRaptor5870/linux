@@ -1,0 +1,4 @@
+KRYPTONISGREAT for Krypton1
+
+decode base 64 string: S1JZUFRPTklTR1JFQVQ=
+find the files for other levels in /krypton/
