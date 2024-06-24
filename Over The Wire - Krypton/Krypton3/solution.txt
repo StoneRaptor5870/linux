@@ -1,0 +1,17 @@
+BRUTE for Krypton4
+
+krypton3@bandit:/krypton/krypton3$ ls -la
+total 36
+drwxr-xr-x 2 root     root     4096 Jun 20 04:08 .
+drwxr-xr-x 9 root     root     4096 Jun 20 04:08 ..
+-rw-r----- 1 krypton3 krypton3 1542 Jun 20 04:08 found1
+-rw-r----- 1 krypton3 krypton3 2128 Jun 20 04:08 found2
+-rw-r----- 1 krypton3 krypton3  560 Jun 20 04:08 found3
+-rw-r----- 1 krypton3 krypton3   56 Jun 20 04:08 HINT1
+-rw-r----- 1 krypton3 krypton3   37 Jun 20 04:08 HINT2
+-rw-r----- 1 krypton3 krypton3   42 Jun 20 04:08 krypton4
+-rw-r----- 1 krypton3 krypton3  785 Jun 20 04:08 README
+krypton3@bandit:/krypton/krypton3$ cat krypton4 | tr ASCDEFGHIJKLMNOPQRSTUVWXYZ BOIHGKNQVTWYURXZAJEMSLDFPC
+WELLD BNETH ELEVE LFBUR PASSW BRDIS BRUTE krypton3@bandit:/krypton/krypton3$
+
+Frequency Analysis
