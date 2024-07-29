@@ -1,0 +1,32 @@
+shift + : - to open cmdline in nvim.
+:q - to close nvim.
+:wq - to save and exit nvim.
+i - to go in insert mode.
+esc - to exit out of insert mode.
+
+spacebar - leader key for nvim (default) gives you different set of keys for different things.
+
+spacebar + e - opens up side file navigation bar and same to close it.
+
+spacebar + e + r - rename file on file navigation.
+spacebar + e + d - to delete file.
+spacebar + e + m - to move a file.
+
+g (in normal mode) - opens goto options.
+
+G - bottom of a file.
+gg - top of a file.
+
+0 - to goto start of a line.
+$ - to goto end of a line.
+
+e/w - fast forwarding words in a line.
+b - fast forwarding back in a line.
+
+leader (spacebar) + sg - to search across the codebase
+
+shift + :, :%s/to replace stuff/ replace with - to replace stuff in file
+
+leader key + | - to split screen vertically
+leader key + - - to split screen horzontally
+ctrl + k(up key)/j(down key)/l(right key)/h(left key) - to navigate btw split windows.
