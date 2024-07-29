@@ -30,3 +30,44 @@ shift + :, :%s/to replace stuff/ replace with - to replace stuff in file
 leader key + | - to split screen vertically
 leader key + - - to split screen horzontally
 ctrl + k(up key)/j(down key)/l(right key)/h(left key) - to navigate btw split windows.
+
+leader key (spacebar) + gd = to go the defination of the function and stuff.
+
+K - to get info about the type defination / function / hover over in vscode.
+
+leader key + c = info about LSB and code actions stuff.
+
+leader key + cr = smart replace of words in all codebase.
+
+leader key + cf = formats the code or you can just save the file.
+
+u = undo stuff.
+r = redo stuff.
+dd = to delete a line.
+p = paste something.
+
+visual mode : v
+select the portion by arrow keys or h/j/k/l : d to cut, p to paste.
+select the portion by arrow keys or h/j/k/l : y to yank/copy, p to paste.
+
+leader + ca = code actions quick fix just like vs code.
+
+leader + cu = to remove unused imports.
+
+leader + co = to organise imports.
+
+leader + ff = to find files.
+
+]b = to move in open files / buffers to right.
+[b = to move in open files / buffers to left.
+
+relative line numbers help to travel directly to actions
+specific line = relative line number h/j/k/l.
+
+leader + ft = to open terminal in nvim.
+
+To add a new file or folder in nvim:
+First enter in to explore mode: : -> to enter cmd line type Explore
+then go the folder where you wanna make file/folder:
+for file -> % - give a name and save
+for folder -> d - give a name and save.
