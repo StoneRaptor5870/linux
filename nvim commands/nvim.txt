@@ -71,3 +71,11 @@ First enter in to explore mode: : -> to enter cmd line type Explore
 then go the folder where you wanna make file/folder:
 for file -> % - give a name and save
 for folder -> d - give a name and save.
+
+To select in between stuff strings, arguments, brackets -
+v to go into visual mode
+i to start the copying of inside stuff 
+( / " - to copy stuff btw () / "".
+
+To reach a specific word and search its occurrences-
+/words + enter then key n to roll through the occurrences.
